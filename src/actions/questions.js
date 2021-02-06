@@ -1,4 +1,4 @@
-export const SAVE_QUESTION = "SAVE_QUESTION";
+export const ADD_QUESTION = "ADD_QUESTION";
 export const SAVE_ANSWER = "SAVE_ANSWER";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 
@@ -9,20 +9,18 @@ export function receiveQuestions(questions) {
   };
 }
 
-export function addQuestion(authedUser, option1, option2) {
+export function addQuestion(question) {
   return {
-    type: SAVE_QUESTION,
-    authedUser,
-    option1,
-    option2,
+    type: ADD_QUESTION,
+    question
   };
 }
 
-export function saveAnswer(authedUser, answer, question) {
+export function saveAnswer(authedUser, answer, questionid) {
   return {
     type: SAVE_ANSWER,
     authedUser,
-    question,
     answer,
+    questionid,
   };
 }

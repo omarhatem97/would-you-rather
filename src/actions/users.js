@@ -9,17 +9,19 @@ export function receiveUsers(users) {
   };
 }
 
-export function saveUserQuestion(question) {
+export function saveUserQuestion(authedUser, questionid) {
   return {
     type: SAVE_USER_QUESTION,
-    question,
+    authedUser,
+    questionid
   };
 }
 
-export function saveUserAnswer(question, answer) {
+export function saveUserAnswer(authedUser, questionid, answer) {
   return {
     type: SAVE_USER_ANSWER,
-    question,
-    answer,
+    authedUser,
+    questionid,
+    answer
   };
 }
