@@ -8,6 +8,7 @@ import reducer from './reducers/index'
 import middleware from './middleware/index'
 import Login from './components/Login'
 
+
 const store = createStore(reducer, middleware)
 
 ReactDOM.render(
