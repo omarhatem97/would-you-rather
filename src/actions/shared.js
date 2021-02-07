@@ -6,15 +6,14 @@ import {_getUsers, _getQuestions} from '../utils/_DATA'
 
 
 export function handleInitialData () {
+
     return(dispatch) =>{
-        _getUsers().then((users)=> {
-            console.log(users)
-            // dispatch(receiveUsers(users));
+        _getUsers().then((users)=> {            
+            dispatch(receiveUsers(users));
         });
 
         _getQuestions().then((questions)=> {
-            console.log(questions)
-            // dispatch(receiveQuestions(questions));
+            dispatch(receiveQuestions(questions));
         });
     }
 }
