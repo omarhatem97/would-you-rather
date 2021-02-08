@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Navigation from "./Navigation";
 import { authedUser } from "../reducers/authedUser";
-import Poll from "./Poll";
+import PollUnAnswered from "./PollUnAnswered";
+import PollAnswered from "./PollAnswered";
 
 class PollList extends Component {
   state = {
@@ -81,7 +82,7 @@ class PollList extends Component {
                 return (
                   <li key={e}>
                     {" "}
-                    <Poll user={users[questions[e].author]} question={questions[e]} />
+                    <PollUnAnswered user={users[questions[e].author]} question={questions[e]} />
                   </li>
                 );
               })}
@@ -95,7 +96,7 @@ class PollList extends Component {
                 return (
                   <li key={e}>
                     {" "}
-                    <Poll user={users[questions[e].author]} question={questions[e]} />
+                    <PollAnswered user={users[questions[e].author]} question={questions[e]} />
                   </li>
                 );
               })}

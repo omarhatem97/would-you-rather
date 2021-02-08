@@ -5,7 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import Login from "./Login";
 import { _getUsers, _getQuestions } from "../utils/_DATA";
 import Dashboard from './Dashboard'
-import Poll from './Poll'
+import Poll from './PollUnAnswered'
 import PollAnswer from './PollAnswer'
 
 class App extends Component {

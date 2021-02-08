@@ -1,6 +1,9 @@
+
+
 export const ADD_QUESTION = "ADD_QUESTION";
 export const SAVE_ANSWER = "SAVE_ANSWER";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
+
 
 export function receiveQuestions(questions) {
   return {
@@ -15,6 +18,9 @@ export function addQuestion(question) {
     question
   };
 }
+
+
+
 
 export function saveAnswer(authedUser, answer, questionid) {
   return {

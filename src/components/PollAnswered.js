@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 import { authedUser } from "../reducers/authedUser";
 import { Link } from "react-router-dom";
 
-class Poll extends Component {
+class PollAnswered extends Component {
   state = {};
   render() {
     console.log(this.props.user);
@@ -36,7 +36,7 @@ class Poll extends Component {
           {this.props.question.optionTwo.text}
         </div>
         <div>
-          <Link to={`/questions/${this.props.question.id}`}>Answer Poll</Link>
+          <Link className="navigate" to={`/questions/${this.props.question.id}`}>View Results</Link>
         </div>
       </div>
     );
@@ -50,4 +50,4 @@ function mapStateToProps({ authedUser }, { user, question }) {
     question,
   };
 }
-export default connect(mapStateToProps)(Poll);
+export default connect(mapStateToProps)(PollAnswered);
