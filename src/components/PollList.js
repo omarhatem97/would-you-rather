@@ -3,11 +3,19 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Navigation from "./Navigation";
 import { authedUser } from "../reducers/authedUser";
+import Poll from "./Poll";
 
 class PollList extends Component {
   state = {
     answered: false,
+    answeredPolls: [],
+    unanswredPolls: [],
   };
+
+  componentDidMount(){
+      const unans =this.fetchUnanswered();
+      this.setState({ unanswredPolls: unans });
+  }
 
   fetchUnanswered = () => {
     const { authedUser, users, questions } = this.props;
@@ -23,10 +31,7 @@ class PollList extends Component {
     const { authedUser, users, questions } = this.props;
     const answers = users[authedUser].answers;
     const answredKeys = Object.keys(answers);
-    const questionsKeys = Object.keys(this.props.questions);
-    let unanswred = questionsKeys.filter((k) => !answredKeys.includes(k));
-
-    return unanswred;
+    return answredKeys;
   };
 
   handleAnswered = (e) => {
@@ -34,38 +39,68 @@ class PollList extends Component {
     if (id == "answered") {
       this.setState({ answered: true });
       //get unanswred polls
-      this.fetchAnswered()
-      
+      const answredPolls = this.fetchAnswered();
+      this.setState({ answeredPolls: answredPolls });
     } else {
       this.setState({ answered: false });
-      this.fetchUnanswered();
+      const unansweredP = this.fetchUnanswered();
+      this.setState({ unanswredPolls: unansweredP });
     }
   };
 
   render() {
+    console.log(this.state);
+    const { answered, answeredPolls, unanswredPolls } = this.state;
+    const { authedUser, users, questions } = this.props;
     return (
       <div>
         <div className="btn-group" role="group" aria-label="Basic example">
           <button
             type="button"
-            className="btn btn-primary"
-            id="answered"
-            onClick={this.handleAnswered}
-          >
-            Answered
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary"
+            className="btn btn-warning"
             id="unanswred"
             onClick={this.handleAnswered}
           >
             Un Answered
           </button>
+          <button
+            type="button"
+            className="btn btn-success"
+            id="answered"
+            onClick={this.handleAnswered}
+          >
+            Answered
+          </button>
         </div>
         <div>
           <br></br>
-          {this.state.answered ? <p>omar</p> : <p>hatem</p>}
+          {/* render the list of unanswered polls */}
+          {this.state.answered === false && (
+            <ul>
+              {unanswredPolls.map((e) => {
+                return (
+                  <li key={e}>
+                    {" "}
+                    <Poll user={questions[e].author} question={questions[e]} />
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+
+          {/* render the list of unanswered polls */}
+          {this.state.answered === true && (
+            <ul>
+              {answeredPolls.map((e) => {
+                return (
+                  <li key={e}>
+                    {" "}
+                    <Poll user={questions[e].author} question={questions[e]} />
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
       </div>
     );

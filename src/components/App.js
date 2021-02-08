@@ -5,6 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import Login from "./Login";
 import { _getUsers, _getQuestions } from "../utils/_DATA";
 import Dashboard from './Dashboard'
+import Poll from './Poll'
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
           <div>
             <Route path="/" exact component={Login} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/poll" component={Poll} />
           </div>
         </Fragment>
       </Router>
