@@ -15,8 +15,8 @@ class PollAnswer extends Component {
   componentDidMount() {
     const { question_id, question, authedUser, author, users } = this.props;
     const answers = Object.keys(users[authedUser].answers);
-    if(answers.includes(question_id)){
-      this.setState({submitted:true})
+    if (answers.includes(question_id)) {
+      this.setState({ submitted: true });
     }
   }
 
@@ -40,60 +40,67 @@ class PollAnswer extends Component {
     const { question_id, question, authedUser, author, users } = this.props;
     if (this.state.submitted === false) {
       card = (
-        <div className="card">
-          <div>{`${
-            this.props.users[this.props.question.author].name
-          }   Asked`}</div>
-          <div>
-            <img
-              src={this.props.users[this.props.question.author].avatarURL}
-              alt="avatar logo"
-              align="center"
-              width="150px"
-              height="150px"
-            ></img>
-          </div>
+        <div>
+          <Navigation />
+          <div className="card">
+            <div>{`${
+              this.props.users[this.props.question.author].name
+            }   Asked`}</div>
+            <div>
+              <img
+                src={this.props.users[this.props.question.author].avatarURL}
+                alt="avatar logo"
+                align="center"
+                width="150px"
+                height="150px"
+              ></img>
+            </div>
 
-          <div>
-            <p>Would you rather</p>
-            <input
-              type="radio"
-              id="OptionOne"
-              name="q"
-              value={"optionOne"}
-              onClick={this.handleValue}
-            />
-            <label>{this.props.question.optionOne.text}</label>
-            <br></br>
-            or
-            <br></br>
-            <input
-              type="radio"
-              id="OptionTwo"
-              name="q"
-              value={"optionTwo"}
-              onClick={this.handleValue}
-            />
-            <label>{this.props.question.optionTwo.text}</label>
-          </div>
-          <div>
-            <button
-              className="button"
-              disabled={this.state.submitted}
-              onClick={this.handleSubmit}
-            >
-              Submit
-            </button>
+            <div>
+              <p>Would you rather</p>
+              <input
+                type="radio"
+                id="OptionOne"
+                name="q"
+                value={"optionOne"}
+                onClick={this.handleValue}
+              />
+              <label>{this.props.question.optionOne.text}</label>
+              <br></br>
+              or
+              <br></br>
+              <input
+                type="radio"
+                id="OptionTwo"
+                name="q"
+                value={"optionTwo"}
+                onClick={this.handleValue}
+              />
+              <label>{this.props.question.optionTwo.text}</label>
+            </div>
+            <div>
+              <button
+                className="button"
+                disabled={this.state.submitted}
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </div>
       );
     } else {
       card = (
-        <Result
+        <div>
+          <Navigation />
+          <Result
           question={this.props.question}
           user={this.props.users[this.props.question.author]}
           answer={users[authedUser].answers[question_id]}
         />
+        </div>
+        
       );
     }
     return (
