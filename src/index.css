@@ -18,8 +18,14 @@ code {
   width: 540px;
   height: auto;
   background-color: brown;
-  color:white
+  color:white;
+  text-align: center;
+
 }
+
+
+
+
 
 .button {
   background-color: #4CAF50; 
@@ -32,4 +38,5 @@ code {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  
 }

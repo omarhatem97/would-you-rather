@@ -76,12 +76,12 @@ class PollList extends Component {
           <br></br>
           {/* render the list of unanswered polls */}
           {this.state.answered === false && (
-            <ul>
+            <ul className="card-list">
               {unanswredPolls.map((e) => {
                 return (
                   <li key={e}>
                     {" "}
-                    <Poll user={questions[e].author} question={questions[e]} />
+                    <Poll user={users[questions[e].author]} question={questions[e]} />
                   </li>
                 );
               })}
@@ -95,7 +95,7 @@ class PollList extends Component {
                 return (
                   <li key={e}>
                     {" "}
-                    <Poll user={questions[e].author} question={questions[e]} />
+                    <Poll user={users[questions[e].author]} question={questions[e]} />
                   </li>
                 );
               })}

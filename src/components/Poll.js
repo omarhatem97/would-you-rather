@@ -3,17 +3,30 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Navigation from "./Navigation";
 import { authedUser } from "../reducers/authedUser";
+import { Link } from "react-router-dom";
 
 class Poll extends Component {
   state = {};
   render() {
+    console.log(this.props.user);
     return (
-        //todo display user image on the card
+      //todo display user image on the card
+
       <div className="card">
         <div>
-          {this.props.user}
+          {this.props.user.name}
           asks
         </div>
+        <div>
+          <img
+            src={this.props.user.avatarURL}
+            alt="avatar logo"
+            align="center"
+            width="150px"
+            height="150px"
+          ></img>
+        </div>
+
         <div>
           <p>Would you rather</p>
           {this.props.question.optionOne.text}
@@ -23,9 +36,7 @@ class Poll extends Component {
           {this.props.question.optionTwo.text}
         </div>
         <div>
-            <button className="button">
-                Answer Poll
-            </button>
+          <Link to={`/questions/${this.props.question.id}`}>Answer Poll</Link>
         </div>
       </div>
     );
