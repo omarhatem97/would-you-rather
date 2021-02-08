@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -20,9 +20,9 @@ class Navigation extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/newPoll">
+              <Link className="nav-link active" to="/newPoll">
                 New Poll
-              </a>
+              </Link>
             </li>
           </ul>
           <span className="navbar-text">

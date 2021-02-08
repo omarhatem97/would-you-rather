@@ -9,6 +9,7 @@ class Login extends Component {
     selectedUser: "",
   };
 
+ 
   handleAuthentication = () => {
     this.props.dispatch(setAuthedUser(this.state.selectedUser));
   };
