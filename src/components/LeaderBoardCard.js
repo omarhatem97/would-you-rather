@@ -1,6 +1,4 @@
-import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { connect } from "react-redux";
+import React, { Component } from "react";
 
 class LeaderBoardCard extends Component {
   render() {
@@ -29,11 +27,12 @@ class LeaderBoardCard extends Component {
               <hr></hr>
             </div>
           </div>
-          
         </div>
-        
+
         <div className="score">
-          <p className="card-text center">{`score :   ${num_Questions + num_Anserws}`}</p>
+          <p className="card-text center">{`score :   ${
+            num_Questions + num_Anserws
+          }`}</p>
         </div>
       </div>
     );

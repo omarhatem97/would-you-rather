@@ -1,51 +1,49 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Login from "./Login";
-import { _getUsers, _getQuestions } from "../utils/_DATA";
 import Dashboard from "./Dashboard";
-import PollCard from "./PollCard";
-import PollAnswer from "./PollAnswer";
+
+import AnswerPoll from "./AnswerPoll";
 import NewPoll from "./NewPoll";
 import LeaderBoard from "./LeaderBoard";
-import { authedUser } from "../reducers/authedUser";
-import PageNotFound from "./PageNotFound"
+
+import PageNotFound from "./PageNotFound";
 
 class App extends Component {
   state = {
-    fetched:false, //data fetched or not
-  }
+    fetched: false, //data fetched or not
+  };
 
   componentDidMount() {
     const authedUser = this.props.authedUser ? authedUser : null;
-    this.props.dispatch(handleInitialData(authedUser)).then(()=>{
-      this.setState({fetched:true});
-    })
+    this.props.dispatch(handleInitialData(authedUser)).then(() => {
+      this.setState({ fetched: true });
+    });
   }
 
   render() {
-    console.log(this.props.authedUser);
-    if(this.state.fetched === false){
-      return <p>Loading</p>
+    if (this.state.fetched === false) {
+      return <p>Loading</p>;
     }
     return (
       <Router>
         <Switch>
-        {this.props.authedUser === null ? (
-          <Route path="/" exact component={Login} />
-        ) : (
-          <Fragment>
-            <div>
-              <Route path="/" exact component={Dashboard} />
-              {/* <Route path="/poll" component={Poll} /> */}
-              <Route path="/add" component={NewPoll} />
-              <Route path="/questions/:question_id" component={PollAnswer} />
-              <Route path="/leaderboard" component={LeaderBoard} />
-            </div>
-          </Fragment>
-        )}
-        <Route component={PageNotFound} />
+          {this.props.authedUser === null ? (
+            <Route path="/" exact component={Login} />
+          ) : (
+            <Fragment>
+              <div>
+                <Route path="/" exact component={Dashboard} />
+                {/* <Route path="/poll" component={Poll} /> */}
+                <Route path="/add" component={NewPoll} />
+                <Route path="/questions/:question_id" component={AnswerPoll} />
+                <Route path="/leaderboard" component={LeaderBoard} />
+              </div>
+            </Fragment>
+          )}
+          <Route component={PageNotFound} />
         </Switch>
       </Router>
     );

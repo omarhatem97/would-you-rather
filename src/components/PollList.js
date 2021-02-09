@@ -1,10 +1,7 @@
-import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import Navigation from "./Navigation";
-import { authedUser } from "../reducers/authedUser";
-import PollCard from "./PollCard";
 
+import PollCard from "./PollCard";
 
 class PollList extends Component {
   state = {
@@ -56,7 +53,6 @@ class PollList extends Component {
   };
 
   render() {
-    console.log(this.state);
     const { answered, answeredPolls, unanswredPolls } = this.state;
     const { authedUser, users, questions } = this.props;
     return (

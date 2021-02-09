@@ -1,5 +1,4 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
+import React, { Component } from "react";
 
 class Result extends Component {
   calcVotes = () => {
@@ -17,7 +16,6 @@ class Result extends Component {
     return { percentage_op1, percentage_op2 };
   };
   render() {
-    // console.log(this.props);
     const op1_num_votes = this.props.question.optionOne.votes.length;
     const op2_num_votes = this.props.question.optionTwo.votes.length;
     const { percentage_op1, percentage_op2 } = this.calcVotes();
@@ -41,7 +39,9 @@ class Result extends Component {
                 <p className="would-you-rather">Would you rather</p>
                 <div>
                   <br></br>
-                  <p className="card-text">{`Your Choice is (${this.props.answer})`}</p>
+                  <p className="card-text">{`Your Choice is (${
+                    this.props.question[this.props.answer].text
+                  })`}</p>
                   <br></br>
                   <p className="card-text">
                     {this.props.question.optionOne.text}

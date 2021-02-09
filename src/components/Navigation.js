@@ -1,9 +1,6 @@
-import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Component} from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
-import { NavLink } from "react-router-dom";
 import setAuthedUser from "../actions/authedUser";
 import { Redirect } from "react-router-dom";
 
@@ -34,7 +31,7 @@ class Navigation extends Component {
               </Link>
             </li>
           </ul>
-          <span className="">
+
             <div>
               <img
                 src={this.props.avatarURL}
@@ -43,9 +40,9 @@ class Navigation extends Component {
                 height="40"
                 className="img"
               />
-              <span className="card-text">{this.props.authedUser}</span>
+              <span className="username">{this.props.users[this.props.authedUser].name}</span>
             </div>
-          </span>
+
           
           <button className="nav-item" onClick={this.handleLogout}>
             <Link className="nav-link active" to="/" onClick={this.handleLogout}>Logout</Link>
@@ -59,6 +56,6 @@ class Navigation extends Component {
 
 function mapStateToProps({ authedUser, users }) {
   const { avatarURL } = users[authedUser];
-  return { authedUser, avatarURL };
+  return { authedUser, avatarURL, users };
 }
 export default connect(mapStateToProps)(Navigation);

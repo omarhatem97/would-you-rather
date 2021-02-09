@@ -1,12 +1,10 @@
-import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import Navigation from "./Navigation";
-import { authedUser } from "../reducers/authedUser";
-import Result from "./results";
 import { handleSaveAnswer } from "../actions/shared";
+import Navigation from "./Navigation";
+import Result from "./results";
 
-class PollAnswer extends Component {
+class AnswerPoll extends Component {
   state = {
     submitted: false,
     value: "",
@@ -135,4 +133,4 @@ function mapStateToProps({ authedUser, users, questions }, props) {
     users,
   };
 }
-export default connect(mapStateToProps)(PollAnswer);
+export default connect(mapStateToProps)(AnswerPoll);

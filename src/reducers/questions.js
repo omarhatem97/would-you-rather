@@ -1,11 +1,10 @@
-import setAuthedUser from "../actions/authedUser";
 import {
   ADD_QUESTION,
-  SAVE_ANSWER,
   RECEIVE_QUESTIONS,
+  SAVE_ANSWER,
 } from "../actions/questions";
 
-export function questions(state={}, action) {
+export function questions(state = {}, action) {
   switch (action.type) {
     case RECEIVE_QUESTIONS:
       return {

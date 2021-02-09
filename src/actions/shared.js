@@ -1,29 +1,28 @@
-import { receiveUsers, RECEIVE_USERS } from "../actions/users";
-import { receiveQuestions, RECEIVE_QUESTIONS } from "../actions/questions";
-import {
-  _getUsers,
-  _getQuestions,
-  _saveQuestionAnswer,
-  _saveQuestion,
-} from "../utils/_DATA";
-import { saveAnswer } from "../actions/questions";
-import { saveUserAnswer } from "../actions/users";
-import { addQuestion } from "../actions/questions";
 import setAuthedUser from "../actions/authedUser";
+import {
+  addQuestion,
+  receiveQuestions,
+  saveAnswer,
+} from "../actions/questions";
+import { receiveUsers, saveUserAnswer } from "../actions/users";
+import {
+  _getQuestions,
+  _getUsers,
+  _saveQuestion,
+  _saveQuestionAnswer,
+} from "../utils/_DATA";
 
 export function handleInitialData(authedUser = null) {
   return (dispatch) => {
-     
-
     _getQuestions().then((questions) => {
       dispatch(receiveQuestions(questions));
     });
 
     dispatch(setAuthedUser(authedUser));
-    
+
     return _getUsers().then((users) => {
-        dispatch(receiveUsers(users));
-      });
+      dispatch(receiveUsers(users));
+    });
   };
 }
 

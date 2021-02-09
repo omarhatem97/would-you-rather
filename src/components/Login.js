@@ -1,37 +1,31 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import setAuthedUser from "../actions/authedUser";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
     selectedUser: "",
-    selected:false,
+    selected: false,
   };
 
   handleAuthentication = () => {
     this.props.dispatch(setAuthedUser(this.state.selectedUser));
-    
-    this.setState({selected:true})
-    
+
+    this.setState({ selected: true });
   };
 
   onSelectUser = (selectedUser) => {
-    if(selectedUser === "select"){
-      this.setState({ selectedUser:"" })
+    if (selectedUser === "select") {
+      this.setState({ selectedUser: "" });
+    } else {
+      this.setState({ selectedUser });
     }
-    else{
-      this.setState({ selectedUser })
-    }
-    
-  }
+  };
 
   render() {
     const { selectedUser } = this.state;
-    // console.log(this.props.users);
-    if(this.state.selected === true){
+    if (this.state.selected === true) {
       return <Redirect to="/" />;
     }
     return (
@@ -57,7 +51,7 @@ class Login extends Component {
                 </select>
               </div>
               <button
-                className="navigate"
+                className="button"
                 disabled={!this.state.selectedUser.length}
                 onClick={this.handleAuthentication}
               >

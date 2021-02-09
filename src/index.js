@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import App from './components/App';
-import { createStore} from 'redux'
-import { Provider } from 'react-redux'
-import reducer from './reducers/index'
-import middleware from './middleware/index'
-import Login from './components/Login'
+import './index.css';
+import middleware from './middleware/index';
+import reducer from './reducers/index';
 
 
 const store = createStore(reducer, middleware)
