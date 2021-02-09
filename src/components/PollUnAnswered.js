@@ -13,49 +13,48 @@ class PollUnAnswered extends Component {
       //todo display user image on the card
 
       <div className="card">
+        <div className="card-user-name">{`${this.props.user.name} asks`}</div>
         <div>
-          {this.props.user.name}
-          asks
-        </div>
-        <div>
-          <img
-            className="img"
-            src={this.props.user.avatarURL}
-            alt="avatar logo"
-            align="center"
-            width="150px"
-            height="150px"
-          ></img>
-        </div>
+          <div className="card-content">
+            <div className="">
+              <img
+                className="img"
+                src={this.props.user.avatarURL}
+                alt="avatar logo"
+                align="center"
+                width="150px"
+                height="150px"
+              ></img>
+            </div>
+            <div className="card-question">
+              <p className="would-you-rather">Would you rather</p>
+              <p className="card-text">{this.props.question.optionOne.text}</p>
 
-        <div>
-          <p>Would you rather</p>
-          {this.props.question.optionOne.text}
-          <br></br>
-          or
-          <br></br>
-          {this.props.question.optionTwo.text}
+              <p className="card-text">or</p>
+
+              <p className="card-text">{this.props.question.optionTwo.text}</p>
+            </div>
+          </div>
         </div>
         <div>
-          <button className="navigate">
-            <Link
-              className="signinlink"
-              to={`/questions/${this.props.question.id}`}
-            >
-              Answer Poll
-            </Link>
-          </button>
+          <Link
+            className="signinlink"
+            to={`/questions/${this.props.question.id}`}
+          >
+            <button className="button">{this.props.buttonName}</button>
+          </Link>
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ authedUser }, { user, question }) {
+function mapStateToProps({ authedUser }, { user, question, buttonName }) {
   return {
     authedUser,
     user,
     question,
+    buttonName,
   };
 }
 export default connect(mapStateToProps)(PollUnAnswered);

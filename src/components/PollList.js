@@ -64,7 +64,7 @@ class PollList extends Component {
         <div className="center">
           <button
             type="button"
-            className="button"
+            className="button un-answered-but"
             id="unanswred"
             onClick={this.handleAnswered}
           >
@@ -72,7 +72,7 @@ class PollList extends Component {
           </button>
           <button
             type="button"
-            className="button"
+            className="button answered-but"
             id="answered"
             onClick={this.handleAnswered}
           >
@@ -88,10 +88,10 @@ class PollList extends Component {
                 {unanswredPolls.map((e) => {
                   return (
                     <li className="li" key={e}>
-                      {" "}
                       <PollUnAnswered
                         user={users[questions[e].author]}
                         question={questions[e]}
+                        buttonName="Answer Poll"
                       />
                     </li>
                   );
@@ -107,10 +107,10 @@ class PollList extends Component {
                 {answeredPolls.map((e) => {
                   return (
                     <li className="li" key={e}>
-                      {" "}
-                      <PollAnswered
+                      <PollUnAnswered
                         user={users[questions[e].author]}
                         question={questions[e]}
+                        buttonName="Results"
                       />
                     </li>
                   );

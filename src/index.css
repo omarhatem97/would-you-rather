@@ -16,35 +16,25 @@ code {
   margin: 16px;
 }
 
-.card {
-  margin: 16px;
-  padding: 16px;
-  width: 540px;
-  height: auto;
-  background-color: brown;
-  color: white;
-  text-align: center;
-}
+
 
 .table {
-
   position: absolute;
   margin: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.card-list{
-  margin:auto;
+.card-list {
+  margin: auto;
 }
 
-.button-margin{
+.button-margin {
   margin: 16px;
 }
 
-.p404{
+.p404 {
   font-size: xx-large;
-
 }
 
 .center {
@@ -53,14 +43,14 @@ code {
   padding: 10px;
 }
 
-.centered{
+.centered {
   position: absolute;
   margin: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.error{
+.error {
   font-size: x-large;
   font-family: cursive;
 }
@@ -68,10 +58,12 @@ code {
 .navigate {
   color: azure;
   background-color: #4caf50;
-  margin-top: 16px;
+  margin: 16px;
 }
 .img {
   border-radius: 50%;
+  margin: 16px;
+  float: left;
 }
 .img-div {
   padding: 30px;
@@ -131,9 +123,70 @@ code {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin: 4px 32px;
   cursor: pointer;
+  border-radius: 8px;
 }
+
+.answered-but {
+  background-color: #4caf50;
+  margin-left: 16px;
+}
+
+.un-answered-but {
+  background-color: darkorange;
+}
+
 .li {
   list-style-type: none;
+}
+
+.card {
+  margin: 16px;
+  padding: 0px;
+  width: 540px;
+  height: auto;
+  
+  color: white;
+  text-align: center;
+  border: #c1c3c1 16x solid;
+  border-radius: 8px;
+}
+
+.card-user-name{
+  
+  border-radius: 8px;
+  background-color: #E7E8E9;
+  float: left;
+  padding: 16px;
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  color: black;
+}
+
+
+.card-content{
+  display: flex;
+}
+
+
+.card-question{
+  border: 2px solid;
+  margin: 16px;
+
+  float: right;
+  width: 80%;
+}
+
+.would-you-rather{
+  font-size: 24px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: black;
+  font-style: italic;
+}
+
+.card-text{
+  color: black;
+  font-size: 18px;
 }

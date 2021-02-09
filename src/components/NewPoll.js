@@ -23,7 +23,6 @@ class NewPoll extends Component {
   };
 
   handleSubmit = () => {
-    
     //dispatch question
     const op1 = this.state.value1;
     const op2 = this.state.value2;
@@ -34,9 +33,9 @@ class NewPoll extends Component {
       author: authedUser,
     };
 
-    this.props.dispatch(handleSaveQuesiton(question)).then(()=>{
-        this.setState({ submitted: true });
-    });    
+    this.props.dispatch(handleSaveQuesiton(question)).then(() => {
+      this.setState({ submitted: true });
+    });
   };
 
   render() {
@@ -47,44 +46,48 @@ class NewPoll extends Component {
       toRender = (
         <div>
           <Navigation />
-          <div className="card">
-            <div>
-              <p>Create a New Poll</p>
-              <p>Complete the question</p>
-              <p>Would you rather</p>
+          <div className="center">
+            <div className="card">
+              <div>
+                <p>Create a New Poll</p>
+                <p>Complete the question</p>
+                <p>Would you rather</p>
+              </div>
+              <input
+                placeholder="Enter Option One"
+                type="text"
+                id="OptionOne"
+                name="q"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <br></br>
+              <p>OR</p>
+              <input
+                placeholder="Enter Option Two"
+                type="text"
+                id="OptionTwo"
+                name="q"
+                value={this.state.value}
+                onChange={this.handleChange}
+              />
+              <br></br>
+              <button
+                disabled={
+                  !(this.state.value1.length && this.state.value2.length)
+                }
+                className="button"
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </button>
             </div>
-            <input
-              placeholder="Enter Option One"
-              type="text"
-              id="OptionOne"
-              name="q"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            <br></br>
-            <p>OR</p>
-            <input
-              placeholder="Enter Option Two"
-              type="text"
-              id="OptionTwo"
-              name="q"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-            <br></br>
-            <button
-              disabled={!(this.state.value1.length && this.state.value2.length)}
-              className="button"
-              onClick={this.handleSubmit}
-            >
-              Submit
-            </button>
           </div>
         </div>
       );
     }
 
-    return toRender ;
+    return toRender;
   }
 }
 

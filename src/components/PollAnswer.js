@@ -23,12 +23,14 @@ class PollAnswer extends Component {
   handleSubmit = () => {
     const val = this.state.value;
     const { question_id, question, authedUser, author, users } = this.props;
-    
+
     //todo save answer
     console.log(question_id);
-    this.props.dispatch(handleSaveAnswer(authedUser, question_id, val)).then(()=>{
-      this.setState({ submitted: true });
-    })
+    this.props
+      .dispatch(handleSaveAnswer(authedUser, question_id, val))
+      .then(() => {
+        this.setState({ submitted: true });
+      });
     //todo display result
   };
 
@@ -96,13 +98,14 @@ class PollAnswer extends Component {
       card = (
         <div>
           <Navigation />
-          <Result
-          question={this.props.question}
-          user={this.props.users[this.props.question.author]}
-          answer={users[authedUser].answers[question_id]}
-        />
+          <div className="center">
+            <Result
+              question={this.props.question}
+              user={this.props.users[this.props.question.author]}
+              answer={users[authedUser].answers[question_id]}
+            />
+          </div>
         </div>
-        
       );
     }
     return (

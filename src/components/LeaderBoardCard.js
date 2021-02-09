@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 class LeaderBoardCard extends Component {
   render() {
     const num_Questions = this.props.user.questions.length;
-    const ans_arr=Object.keys(this.props.user.answers)
+    const ans_arr = Object.keys(this.props.user.answers);
     const num_Anserws = ans_arr.length;
     return (
       <div className="card">
@@ -15,6 +15,7 @@ class LeaderBoardCard extends Component {
         </div>
         <div>
           <img
+            className="img"
             src={this.props.user.avatarURL}
             alt="avatar logo"
             align="center"
@@ -27,7 +28,7 @@ class LeaderBoardCard extends Component {
           <p>{`Created questions ------>   ${num_Questions}`}</p>
           <br></br>
           <p>{`Answered questions ------> ${num_Anserws}`}</p>
-          <hr ></hr>
+          <hr></hr>
           <p>{`score :   ${num_Questions + num_Anserws}`}</p>
         </div>
       </div>

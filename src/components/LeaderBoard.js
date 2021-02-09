@@ -25,17 +25,19 @@ class Leaderboard extends Component {
 
   render() {
     const sortedKeys = this.handleSort();
-    const {users} = this.props;
+    const { users } = this.props;
     return (
       <div>
         <Navigation />
-        {sortedKeys.map((u) => {
-          return (
-            <li className="li" key={u}>
-              <LeaderBoardCard user={users[u]} />
-            </li>
-          );
-        })}
+        <ul className="center">
+          {sortedKeys.map((u) => {
+            return (
+              <li className="li" key={u}>
+                <LeaderBoardCard user={users[u]} />
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }
