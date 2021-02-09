@@ -190,3 +190,7 @@ code {
   color: black;
   font-size: 18px;
 }
+
+.label-radio{
+  padding: 16px;
+}

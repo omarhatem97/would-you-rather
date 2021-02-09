@@ -5,7 +5,7 @@ import { handleInitialData } from "../actions/shared";
 import Login from "./Login";
 import { _getUsers, _getQuestions } from "../utils/_DATA";
 import Dashboard from "./Dashboard";
-import Poll from "./PollUnAnswered";
+import PollCard from "./PollCard";
 import PollAnswer from "./PollAnswer";
 import NewPoll from "./NewPoll";
 import LeaderBoard from "./LeaderBoard";
@@ -38,7 +38,7 @@ class App extends Component {
           <Fragment>
             <div>
               <Route path="/" exact component={Dashboard} />
-              <Route path="/poll" component={Poll} />
+              {/* <Route path="/poll" component={Poll} /> */}
               <Route path="/add" component={NewPoll} />
               <Route path="/questions/:question_id" component={PollAnswer} />
               <Route path="/leaderboard" component={LeaderBoard} />

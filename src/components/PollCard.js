@@ -5,7 +5,7 @@ import Navigation from "./Navigation";
 import { authedUser } from "../reducers/authedUser";
 import { Link } from "react-router-dom";
 
-class PollUnAnswered extends Component {
+class PollCard extends Component {
   state = {};
   render() {
     console.log(this.props.user);
@@ -16,7 +16,7 @@ class PollUnAnswered extends Component {
         <div className="card-user-name">{`${this.props.user.name} asks`}</div>
         <div>
           <div className="card-content">
-            <div className="">
+            <div>
               <img
                 className="img"
                 src={this.props.user.avatarURL}
@@ -57,4 +57,4 @@ function mapStateToProps({ authedUser }, { user, question, buttonName }) {
     buttonName,
   };
 }
-export default connect(mapStateToProps)(PollUnAnswered);
+export default connect(mapStateToProps)(PollCard);

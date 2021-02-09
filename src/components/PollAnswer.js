@@ -46,50 +46,58 @@ class PollAnswer extends Component {
       card = (
         <div>
           <Navigation />
-          <div className="card">
-            <div>{`${
-              this.props.users[this.props.question.author].name
-            }   Asked`}</div>
-            <div>
-              <img
-                src={this.props.users[this.props.question.author].avatarURL}
-                alt="avatar logo"
-                align="center"
-                width="150px"
-                height="150px"
-              ></img>
-            </div>
+          <div className="center">
+            <div className="card">
+              <div className="card-user-name">
+                {`${this.props.users[this.props.question.author].name} Asked`}
+              </div>
+              <div className="card-content">
+                <div>
+                  <img
+                    className="img"
+                    src={this.props.users[this.props.question.author].avatarURL}
+                    alt="avatar logo"
+                    align="center"
+                    width="150px"
+                    height="150px"
+                  ></img>
+                </div>
+                <div className="card-question">
+                  <p className="would-you-rather">Would you rather</p>
+                  <input
+                    type="radio"
+                    id="OptionOne"
+                    name="q"
+                    value={"optionOne"}
+                    onClick={this.handleValue}
+                  />
+                  <label className="card-text label-radio">
+                    {this.props.question.optionOne.text}
+                  </label>
+                  <br></br>
+                  <input
+                    type="radio"
+                    id="OptionTwo"
+                    name="q"
+                    value={"optionTwo"}
+                    onClick={this.handleValue}
+                  />
+                  <label className="card-text label-radio">
+                    {this.props.question.optionTwo.text}
+                  </label>
+                </div>
+              </div>
+              <div></div>
 
-            <div>
-              <p>Would you rather</p>
-              <input
-                type="radio"
-                id="OptionOne"
-                name="q"
-                value={"optionOne"}
-                onClick={this.handleValue}
-              />
-              <label>{this.props.question.optionOne.text}</label>
-              <br></br>
-              or
-              <br></br>
-              <input
-                type="radio"
-                id="OptionTwo"
-                name="q"
-                value={"optionTwo"}
-                onClick={this.handleValue}
-              />
-              <label>{this.props.question.optionTwo.text}</label>
-            </div>
-            <div>
-              <button
-                className="button"
-                disabled={this.state.submitted}
-                onClick={this.handleSubmit}
-              >
-                Submit
-              </button>
+              <div>
+                <button
+                  className="button"
+                  disabled={this.state.submitted}
+                  onClick={this.handleSubmit}
+                >
+                  Submit
+                </button>
+              </div>
             </div>
           </div>
         </div>

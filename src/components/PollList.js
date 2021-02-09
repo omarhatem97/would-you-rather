@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import Navigation from "./Navigation";
 import { authedUser } from "../reducers/authedUser";
-import PollUnAnswered from "./PollUnAnswered";
-import PollAnswered from "./PollAnswered";
+import PollCard from "./PollCard";
+
 
 class PollList extends Component {
   state = {
@@ -88,7 +88,7 @@ class PollList extends Component {
                 {unanswredPolls.map((e) => {
                   return (
                     <li className="li" key={e}>
-                      <PollUnAnswered
+                      <PollCard
                         user={users[questions[e].author]}
                         question={questions[e]}
                         buttonName="Answer Poll"
@@ -107,7 +107,7 @@ class PollList extends Component {
                 {answeredPolls.map((e) => {
                   return (
                     <li className="li" key={e}>
-                      <PollUnAnswered
+                      <PollCard
                         user={users[questions[e].author]}
                         question={questions[e]}
                         buttonName="Results"
