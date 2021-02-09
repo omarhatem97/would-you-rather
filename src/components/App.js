@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Login from "./Login";
@@ -9,8 +9,8 @@ import Poll from "./PollUnAnswered";
 import PollAnswer from "./PollAnswer";
 import NewPoll from "./NewPoll";
 import LeaderBoard from "./LeaderBoard";
-
 import { authedUser } from "../reducers/authedUser";
+import PageNotFound from "./PageNotFound"
 
 class App extends Component {
   state = {
@@ -31,6 +31,7 @@ class App extends Component {
     }
     return (
       <Router>
+        <Switch>
         {this.props.authedUser === null ? (
           <Route path="/" exact component={Login} />
         ) : (
@@ -45,6 +46,8 @@ class App extends Component {
             </div>
           </Fragment>
         )}
+        <Route component={PageNotFound} />
+        </Switch>
       </Router>
     );
   }

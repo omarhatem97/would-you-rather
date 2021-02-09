@@ -19,6 +19,7 @@ class PollAnswered extends Component {
         </div>
         <div>
           <img
+            className="img"
             src={this.props.user.avatarURL}
             alt="avatar logo"
             align="center"

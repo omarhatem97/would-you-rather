@@ -43,7 +43,7 @@ class Navigation extends Component {
                 height="40"
                 className="d-inline-block align-centre img"
               />
-              {this.props.authedUser}
+              <span className="username">{this.props.authedUser}</span>
             </a>
           </span>
           <button className="nav-item" onClick={this.handleLogout}>

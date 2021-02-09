@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.username {
+  margin: 16px;
+}
+
 .card {
   margin: 16px;
   padding: 16px;
@@ -20,6 +24,38 @@ code {
   background-color: brown;
   color: white;
   text-align: center;
+}
+
+.table {
+
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.card-list{
+  margin:auto;
+}
+
+.button-margin{
+  margin: 16px;
+}
+
+.p404{
+  font-size: xx-large;
+
+}
+.centered{
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.error{
+  font-size: x-large;
+  font-family: cursive;
 }
 
 .navigate {

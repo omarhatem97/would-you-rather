@@ -70,7 +70,7 @@ class PollList extends Component {
         <div className="btn-group" role="group" aria-label="Basic example">
           <button
             type="button"
-            className="btn btn-warning"
+            className="button"
             id="unanswred"
             onClick={this.handleAnswered}
           >
@@ -78,7 +78,7 @@ class PollList extends Component {
           </button>
           <button
             type="button"
-            className="btn btn-success"
+            className="button"
             id="answered"
             onClick={this.handleAnswered}
           >
@@ -89,7 +89,8 @@ class PollList extends Component {
           <br></br>
           {/* render the list of unanswered polls */}
           {this.state.answered === false && (
-            <ul className="card-list">
+           <div>
+              <ul >
               {unanswredPolls.map((e) => {
                 return (
                   <li className="li" key={e}>
@@ -102,6 +103,7 @@ class PollList extends Component {
                 );
               })}
             </ul>
+           </div>
           )}
 
           {/* render the list of unanswered polls */}
