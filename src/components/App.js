@@ -8,17 +8,25 @@ import Dashboard from "./Dashboard";
 import Poll from "./PollUnAnswered";
 import PollAnswer from "./PollAnswer";
 import NewPoll from "./NewPoll";
+import LeaderBoard from "./LeaderBoard";
+
 import { authedUser } from "../reducers/authedUser";
 
 class App extends Component {
+  state = {
+    fetched:false, //data fetched or not
+  }
+
   componentDidMount() {
-    console.log("in did mount!");
     const authedUser = this.props.authedUser ? authedUser : null;
-    this.props.dispatch(handleInitialData(authedUser));
+    this.props.dispatch(handleInitialData(authedUser))
   }
 
   render() {
-    console.log(this.props.authedUser)
+    console.log(this.props.authedUser);
+    // if(this.state.fetched === false){
+    //   return <p>Loading</p>
+    // }
     return (
       <Router>
         {this.props.authedUser === null ? (
@@ -31,6 +39,7 @@ class App extends Component {
               <Route path="/poll" component={Poll} />
               <Route path="/newPoll" component={NewPoll} />
               <Route path="/questions/:question_id" component={PollAnswer} />
+              <Route path="/leaderBoard" component={LeaderBoard} />
             </div>
           </Fragment>
         )}

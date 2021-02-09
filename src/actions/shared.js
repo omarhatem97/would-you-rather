@@ -9,11 +9,11 @@ import {
 import { saveAnswer } from "../actions/questions";
 import { saveUserAnswer } from "../actions/users";
 import { addQuestion } from "../actions/questions";
-import setAuthedUser from '../actions/authedUser'
+import setAuthedUser from "../actions/authedUser";
 
-export function handleInitialData(authedUser=null) {
+export function handleInitialData(authedUser = null) {
   return (dispatch) => {
-    _getUsers().then((users) => {
+     _getUsers().then((users) => {
       dispatch(receiveUsers(users));
     });
 
@@ -21,14 +21,16 @@ export function handleInitialData(authedUser=null) {
       dispatch(receiveQuestions(questions));
     });
 
-    dispatch(setAuthedUser(authedUser))
+    dispatch(setAuthedUser(authedUser));
+    
   };
 }
 
 export function handleSaveQuesiton(question) {
   return (dispatch) => {
-    _saveQuestion(question).then((formattedQuestion) => {
+    return _saveQuestion(question).then((formattedQuestion) => {
       dispatch(addQuestion(formattedQuestion));
+      console.log("finished dispatching now");
     });
   };
 }
@@ -39,7 +41,7 @@ export function handleSaveAnswer(authedUser, qid, answer) {
   console.log(answer);
 
   return (dispatch) => {
-    _saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
+    return _saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
       dispatch(saveAnswer(authedUser, answer, qid));
       dispatch(saveUserAnswer(authedUser, qid, answer));
     });

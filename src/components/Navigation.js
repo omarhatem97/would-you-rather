@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { NavLink } from "react-router-dom";
 
 class Navigation extends Component {
@@ -10,14 +12,14 @@ class Navigation extends Component {
         <div className="container-fluid">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" to="/dashboard">
                 Home
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/leaderBoard">
+              <Link className="nav-link active" to="/leaderBoard">
                 LeaderBoard
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link active" to="/newPoll">
@@ -32,7 +34,7 @@ class Navigation extends Component {
                 alt={`Avatar of ${this.props.authedUser}`}
                 width="40"
                 height="40"
-                className="d-inline-block align-centre"
+                className="d-inline-block align-centre img"
               />
               {this.props.authedUser}
             </a>
@@ -49,7 +51,7 @@ class Navigation extends Component {
 }
 
 function mapStateToProps({ authedUser, users }) {
-  const { id, avatarURL } = users[authedUser];
+  const { avatarURL } = users[authedUser];
   return { authedUser, avatarURL };
 }
 export default connect(mapStateToProps)(Navigation);

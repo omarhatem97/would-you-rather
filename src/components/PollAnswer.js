@@ -23,10 +23,12 @@ class PollAnswer extends Component {
   handleSubmit = () => {
     const val = this.state.value;
     const { question_id, question, authedUser, author, users } = this.props;
-    this.setState({ submitted: true });
+    
     //todo save answer
     console.log(question_id);
-    this.props.dispatch(handleSaveAnswer(authedUser, question_id, val));
+    this.props.dispatch(handleSaveAnswer(authedUser, question_id, val)).then(()=>{
+      this.setState({ submitted: true });
+    })
     //todo display result
   };
 

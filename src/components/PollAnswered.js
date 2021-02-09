@@ -36,7 +36,14 @@ class PollAnswered extends Component {
           {this.props.question.optionTwo.text}
         </div>
         <div>
-          <Link className="navigate" to={`/questions/${this.props.question.id}`}>View Results</Link>
+          <button className="navigate">
+            <Link
+              className="signinlink"
+              to={`/questions/${this.props.question.id}`}
+            >
+              View Results
+            </Link>
+          </button>
         </div>
       </div>
     );

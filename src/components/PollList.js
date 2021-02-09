@@ -13,9 +13,9 @@ class PollList extends Component {
     unanswredPolls: [],
   };
 
-  componentDidMount(){
-      const unans =this.fetchUnanswered();
-      this.setState({ unanswredPolls: unans });
+  componentDidMount() {
+    const unans = this.fetchUnanswered();
+    this.setState({ unanswredPolls: unans });
   }
 
   fetchUnanswered = () => {
@@ -80,9 +80,12 @@ class PollList extends Component {
             <ul className="card-list">
               {unanswredPolls.map((e) => {
                 return (
-                  <li key={e}>
+                  <li className="li" key={e}>
                     {" "}
-                    <PollUnAnswered user={users[questions[e].author]} question={questions[e]} />
+                    <PollUnAnswered
+                      user={users[questions[e].author]}
+                      question={questions[e]}
+                    />
                   </li>
                 );
               })}
@@ -94,9 +97,12 @@ class PollList extends Component {
             <ul>
               {answeredPolls.map((e) => {
                 return (
-                  <li key={e}>
+                  <li className="li" key={e}>
                     {" "}
-                    <PollAnswered user={users[questions[e].author]} question={questions[e]} />
+                    <PollAnswered
+                      user={users[questions[e].author]}
+                      question={questions[e]}
+                    />
                   </li>
                 );
               })}

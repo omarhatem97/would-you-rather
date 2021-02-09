@@ -3,43 +3,67 @@ import { connect } from "react-redux";
 import setAuthedUser from "../actions/authedUser";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
     selectedUser: "",
+    selected:false,
   };
 
- 
   handleAuthentication = () => {
     this.props.dispatch(setAuthedUser(this.state.selectedUser));
+    
+    this.setState({selected:true})
+    
   };
 
-  onSelectUser = (selectedUser) => this.setState({ selectedUser });
+  onSelectUser = (selectedUser) => {
+    if(selectedUser === "select"){
+      this.setState({ selectedUser:"" })
+    }
+    else{
+      this.setState({ selectedUser })
+    }
+    
+  }
 
   render() {
     const { selectedUser } = this.state;
     // console.log(this.props.users);
+    if(this.state.selected === true){
+      return <Redirect to="/dashboard" />;
+    }
     return (
       <Fragment>
-        <div>
-          <div>
-            <p>Would You Rather - login</p>
-          </div>
-          <div>
-            <label>Select a user: </label>
+        <div className="login">
+          <div className="sigin-body">
             <div>
-              <select onChange={(e) => this.onSelectUser(e.target.value)}>
-                <option> Select User</option>
-                {Object.keys(this.props.users).map((user) => (
-                  <option key={user} value={user}>
-                    {user}
-                  </option>
-                ))}
-              </select>
+              <p className="title">Would You Rather - login</p>
             </div>
-            <Link to="/dashboard" onClick={this.handleAuthentication}>
-              SIGN IN
-            </Link>
+            <div>
+              <label className="floatme">Select a user: </label>
+              <div className="select">
+                <select
+                  className="select-bar"
+                  onChange={(e) => this.onSelectUser(e.target.value)}
+                >
+                  <option value="select"> Select User</option>
+                  {Object.keys(this.props.users).map((user) => (
+                    <option key={user} value={user}>
+                      {user}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <button
+                className="navigate"
+                disabled={!this.state.selectedUser.length}
+                onClick={this.handleAuthentication}
+              >
+                SIGN IN
+              </button>
+            </div>
           </div>
         </div>
       </Fragment>

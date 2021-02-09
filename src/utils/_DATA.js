@@ -132,6 +132,7 @@ export function _getQuestions () {
 }
 
 function formatQuestion ({ optionOneText, optionTwoText, author }) {
+  console.log(optionOneText);
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -151,6 +152,7 @@ export function _saveQuestion (question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
+    console.log(formattedQuestion);
 
     setTimeout(() => {
       questions = {

@@ -5,6 +5,24 @@ import Navigation from "./Navigation";
 import PollList from "./PollList";
 
 class Dashboard extends Component {
+  state = {
+    unanswredPolls: [],
+  };
+
+  componentDidMount() {
+    const unans = this.fetchUnanswered();
+    this.setState({ unanswredPolls: unans });
+  }
+
+  fetchUnanswered = () => {
+    const { authedUser, users, questions } = this.props;
+    const answers = users[authedUser].answers;
+    const answredKeys = Object.keys(answers);
+    const questionsKeys = Object.keys(this.props.questions);
+    let unanswred = questionsKeys.filter((k) => !answredKeys.includes(k));
+
+    return unanswred;
+  };
   render() {
     return (
       <div>
@@ -16,7 +34,7 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  return { authedUser };
+function mapStateToProps({ authedUser, users, questions }) {
+  return { authedUser, users, questions };
 }
 export default connect(mapStateToProps)(Dashboard);

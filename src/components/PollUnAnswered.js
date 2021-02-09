@@ -36,7 +36,14 @@ class PollUnAnswered extends Component {
           {this.props.question.optionTwo.text}
         </div>
         <div>
-          <Link className="navigate" to={`/questions/${this.props.question.id}`}>Answer Poll</Link>
+          <button className="navigate">
+            <Link
+              className="signinlink"
+              to={`/questions/${this.props.question.id}`}
+            >
+              Answer Poll
+            </Link>
+          </button>
         </div>
       </div>
     );
