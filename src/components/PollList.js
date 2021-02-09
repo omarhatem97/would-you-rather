@@ -22,7 +22,13 @@ class PollList extends Component {
     const { authedUser, users, questions } = this.props;
     const answers = users[authedUser].answers;
     const answredKeys = Object.keys(answers);
-    const questionsKeys = Object.keys(this.props.questions);
+    const questionsKeys = Object.keys(questions);
+    //sort them
+    questionsKeys.sort(
+      (a, b) =>
+        questions[b].timestamp -
+        questions[a].timestamp
+    );
     let unanswred = questionsKeys.filter((k) => !answredKeys.includes(k));
 
     return unanswred;
@@ -32,6 +38,12 @@ class PollList extends Component {
     const { authedUser, users, questions } = this.props;
     const answers = users[authedUser].answers;
     const answredKeys = Object.keys(answers);
+    //sort them
+    answredKeys.sort(
+      (a, b) =>
+        questions[b].timestamp -
+        questions[a].timestamp
+    );
     return answredKeys;
   };
 

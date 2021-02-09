@@ -19,14 +19,16 @@ class App extends Component {
 
   componentDidMount() {
     const authedUser = this.props.authedUser ? authedUser : null;
-    this.props.dispatch(handleInitialData(authedUser))
+    this.props.dispatch(handleInitialData(authedUser)).then(()=>{
+      this.setState({fetched:true});
+    })
   }
 
   render() {
     console.log(this.props.authedUser);
-    // if(this.state.fetched === false){
-    //   return <p>Loading</p>
-    // }
+    if(this.state.fetched === false){
+      return <p>Loading</p>
+    }
     return (
       <Router>
         {this.props.authedUser === null ? (

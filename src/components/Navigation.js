@@ -4,8 +4,15 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { NavLink } from "react-router-dom";
+import setAuthedUser from "../actions/authedUser";
+import { Redirect } from "react-router-dom";
 
 class Navigation extends Component {
+  handleLogout = () => {
+    this.props.dispatch(setAuthedUser(null));
+    return <Redirect to="/" />;
+  };
+
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -39,11 +46,10 @@ class Navigation extends Component {
               {this.props.authedUser}
             </a>
           </span>
-          <span className="navbar-text">
-            <a className="nav-link active" aria-current="page" href="/">
-              Logout
-            </a>
-          </span>
+          <button className="nav-item" onClick={this.handleLogout}>
+            <Link className="nav-link active" to="/" onClick={this.handleLogout}>Logout</Link>
+            
+          </button>
         </div>
       </nav>
     );

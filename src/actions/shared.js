@@ -13,9 +13,7 @@ import setAuthedUser from "../actions/authedUser";
 
 export function handleInitialData(authedUser = null) {
   return (dispatch) => {
-     _getUsers().then((users) => {
-      dispatch(receiveUsers(users));
-    });
+     
 
     _getQuestions().then((questions) => {
       dispatch(receiveQuestions(questions));
@@ -23,6 +21,9 @@ export function handleInitialData(authedUser = null) {
 
     dispatch(setAuthedUser(authedUser));
     
+    return _getUsers().then((users) => {
+        dispatch(receiveUsers(users));
+      });
   };
 }
 
