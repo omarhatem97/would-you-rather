@@ -9,27 +9,31 @@ class LeaderBoardCard extends Component {
     const num_Anserws = ans_arr.length;
     return (
       <div className="card">
-        <div>
-          {this.props.user.name}
-          asks
+        <div className="card-user-name">{this.props.user.name}</div>
+        <div className="card-content">
+          <div>
+            <img
+              className="img"
+              src={this.props.user.avatarURL}
+              alt="avatar logo"
+              align="center"
+              width="150px"
+              height="150px"
+            ></img>
+          </div>
+          <div className="card-question">
+            <div>
+              <p className="card-text">{`Created questions ------>   ${num_Questions}`}</p>
+              <br></br>
+              <p className="card-text">{`Answered questions -----> ${num_Anserws}`}</p>
+              <hr></hr>
+            </div>
+          </div>
+          
         </div>
-        <div>
-          <img
-            className="img"
-            src={this.props.user.avatarURL}
-            alt="avatar logo"
-            align="center"
-            width="150px"
-            height="150px"
-          ></img>
-        </div>
-        <hr />
-        <div>
-          <p>{`Created questions ------>   ${num_Questions}`}</p>
-          <br></br>
-          <p>{`Answered questions ------> ${num_Anserws}`}</p>
-          <hr></hr>
-          <p>{`score :   ${num_Questions + num_Anserws}`}</p>
+        
+        <div className="score">
+          <p className="card-text center">{`score :   ${num_Questions + num_Anserws}`}</p>
         </div>
       </div>
     );

@@ -34,18 +34,19 @@ class Navigation extends Component {
               </Link>
             </li>
           </ul>
-          <span className="navbar-text">
-            <a>
+          <span className="">
+            <div>
               <img
                 src={this.props.avatarURL}
                 alt={`Avatar of ${this.props.authedUser}`}
                 width="40"
                 height="40"
-                className="d-inline-block align-centre img"
+                className="img"
               />
-              <span className="username">{this.props.authedUser}</span>
-            </a>
+              <span className="card-text">{this.props.authedUser}</span>
+            </div>
           </span>
+          
           <button className="nav-item" onClick={this.handleLogout}>
             <Link className="nav-link active" to="/" onClick={this.handleLogout}>Logout</Link>
             

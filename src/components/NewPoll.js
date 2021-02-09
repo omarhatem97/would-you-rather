@@ -48,29 +48,31 @@ class NewPoll extends Component {
           <Navigation />
           <div className="center">
             <div className="card">
-              <div>
-                <p>Create a New Poll</p>
-                <p>Complete the question</p>
-                <p>Would you rather</p>
+              <div className="card-user-name">
+                <p className="card-text">Create a New Poll</p>
               </div>
-              <input
-                placeholder="Enter Option One"
-                type="text"
-                id="OptionOne"
-                name="q"
-                value={this.state.value}
-                onChange={this.handleChange}
-              />
-              <br></br>
-              <p>OR</p>
-              <input
-                placeholder="Enter Option Two"
-                type="text"
-                id="OptionTwo"
-                name="q"
-                value={this.state.value}
-                onChange={this.handleChange}
-              />
+              <div>
+                <p className="card-text comp-ques">Complete the question</p>
+                <p className="would-you-rather">Would you rather</p>
+                <input className="input"
+                  placeholder="Enter Option One"
+                  type="text"
+                  id="OptionOne"
+                  name="q"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+                
+                <p className="card-text">or</p>
+                <input className="input"
+                  placeholder="Enter Option Two"
+                  type="text"
+                  id="OptionTwo"
+                  name="q"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </div>
               <br></br>
               <button
                 disabled={

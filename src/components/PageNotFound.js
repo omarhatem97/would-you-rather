@@ -9,9 +9,13 @@ class PageNotFound extends Component {
       <div className="centered">
         <p className="p404">404 </p>
         <p className="error">ERROR </p>
-        <button className="button">
-          <Link to="/">Back To Login</Link>
-        </button>
+        <Link
+            className="signinlink"
+            to="/"
+          >
+            <button className="button">Back To Our Site</button>
+            
+          </Link>
       </div>
     );
   }
