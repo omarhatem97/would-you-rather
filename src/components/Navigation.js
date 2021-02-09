@@ -19,17 +19,17 @@ class Navigation extends Component {
         <div className="container-fluid">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link active" to="/dashboard">
+              <Link className="nav-link active" to="/">
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to="/leaderBoard">
+              <Link className="nav-link active" to="/leaderboard">
                 LeaderBoard
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link active" to="/newPoll">
+              <Link className="nav-link active" to="/add">
                 New Poll
               </Link>
             </li>

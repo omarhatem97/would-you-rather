@@ -32,7 +32,7 @@ class Login extends Component {
     const { selectedUser } = this.state;
     // console.log(this.props.users);
     if(this.state.selected === true){
-      return <Redirect to="/dashboard" />;
+      return <Redirect to="/" />;
     }
     return (
       <Fragment>

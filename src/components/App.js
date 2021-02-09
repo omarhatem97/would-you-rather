@@ -38,11 +38,10 @@ class App extends Component {
           <Fragment>
             <div>
               <Route path="/" exact component={Dashboard} />
-              <Route path="/dashboard" component={Dashboard} />
               <Route path="/poll" component={Poll} />
-              <Route path="/newPoll" component={NewPoll} />
+              <Route path="/add" component={NewPoll} />
               <Route path="/questions/:question_id" component={PollAnswer} />
-              <Route path="/leaderBoard" component={LeaderBoard} />
+              <Route path="/leaderboard" component={LeaderBoard} />
             </div>
           </Fragment>
         )}

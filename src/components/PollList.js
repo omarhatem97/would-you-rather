@@ -25,9 +25,7 @@ class PollList extends Component {
     const questionsKeys = Object.keys(questions);
     //sort them
     questionsKeys.sort(
-      (a, b) =>
-        questions[b].timestamp -
-        questions[a].timestamp
+      (a, b) => questions[b].timestamp - questions[a].timestamp
     );
     let unanswred = questionsKeys.filter((k) => !answredKeys.includes(k));
 
@@ -39,11 +37,7 @@ class PollList extends Component {
     const answers = users[authedUser].answers;
     const answredKeys = Object.keys(answers);
     //sort them
-    answredKeys.sort(
-      (a, b) =>
-        questions[b].timestamp -
-        questions[a].timestamp
-    );
+    answredKeys.sort((a, b) => questions[b].timestamp - questions[a].timestamp);
     return answredKeys;
   };
 
@@ -67,7 +61,7 @@ class PollList extends Component {
     const { authedUser, users, questions } = this.props;
     return (
       <div>
-        <div className="btn-group" role="group" aria-label="Basic example">
+        <div className="center">
           <button
             type="button"
             className="button"
@@ -89,38 +83,40 @@ class PollList extends Component {
           <br></br>
           {/* render the list of unanswered polls */}
           {this.state.answered === false && (
-           <div>
-              <ul >
-              {unanswredPolls.map((e) => {
-                return (
-                  <li className="li" key={e}>
-                    {" "}
-                    <PollUnAnswered
-                      user={users[questions[e].author]}
-                      question={questions[e]}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-           </div>
+            <div className="center">
+              <ul>
+                {unanswredPolls.map((e) => {
+                  return (
+                    <li className="li" key={e}>
+                      {" "}
+                      <PollUnAnswered
+                        user={users[questions[e].author]}
+                        question={questions[e]}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           )}
 
           {/* render the list of unanswered polls */}
           {this.state.answered === true && (
-            <ul>
-              {answeredPolls.map((e) => {
-                return (
-                  <li className="li" key={e}>
-                    {" "}
-                    <PollAnswered
-                      user={users[questions[e].author]}
-                      question={questions[e]}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
+            <div className="center">
+              <ul>
+                {answeredPolls.map((e) => {
+                  return (
+                    <li className="li" key={e}>
+                      {" "}
+                      <PollAnswered
+                        user={users[questions[e].author]}
+                        question={questions[e]}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           )}
         </div>
       </div>
