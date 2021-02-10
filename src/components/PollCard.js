@@ -3,12 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class PollCard extends Component {
-  state = {};
   render() {
     console.log(this.props.user);
     return (
-      //todo display user image on the card
-
       <div className="card">
         <div className="card-user-name">{`${this.props.user.name} asks`}</div>
         <div>

@@ -25,9 +25,9 @@ class Login extends Component {
 
   render() {
     const { selectedUser } = this.state;
-    if (this.state.selected === true) {
-      return <Redirect to="/" />;
-    }
+    // if (this.state.selected === true) {
+    //   return <Redirect to="/" />;
+    // }
     return (
       <Fragment>
         <div className="login">

@@ -4,7 +4,7 @@ import {
   receiveQuestions,
   saveAnswer,
 } from "../actions/questions";
-import { receiveUsers, saveUserAnswer } from "../actions/users";
+import { receiveUsers, saveUserAnswer, saveUserQuestion } from "../actions/users";
 import {
   _getQuestions,
   _getUsers,
@@ -26,11 +26,11 @@ export function handleInitialData(authedUser = null) {
   };
 }
 
-export function handleSaveQuesiton(question) {
+export function handleSaveQuesiton(authedUser, question) {
   return (dispatch) => {
     return _saveQuestion(question).then((formattedQuestion) => {
       dispatch(addQuestion(formattedQuestion));
-      console.log("finished dispatching now");
+      dispatch(saveUserQuestion(authedUser, formattedQuestion.id));
     });
   };
 }

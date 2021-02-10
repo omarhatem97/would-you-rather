@@ -30,7 +30,7 @@ class NewPoll extends Component {
       author: authedUser,
     };
 
-    this.props.dispatch(handleSaveQuesiton(question)).then(() => {
+    this.props.dispatch(handleSaveQuesiton(this.props.authedUser,question)).then(() => {
       this.setState({ submitted: true });
     });
   };

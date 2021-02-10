@@ -4,11 +4,9 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
-
 import AnswerPoll from "./AnswerPoll";
 import NewPoll from "./NewPoll";
 import LeaderBoard from "./LeaderBoard";
-
 import PageNotFound from "./PageNotFound";
 
 class App extends Component {
@@ -29,22 +27,21 @@ class App extends Component {
     }
     return (
       <Router>
-        <Switch>
-          {this.props.authedUser === null ? (
-            <Route path="/" exact component={Login} />
-          ) : (
-            <Fragment>
-              <div>
-                <Route path="/" exact component={Dashboard} />
-                {/* <Route path="/poll" component={Poll} /> */}
-                <Route path="/add" component={NewPoll} />
+        {this.props.authedUser === null ? (
+          <Route path="*" exact component={Login} />
+        ) : (
+          <Fragment>
+            <div>
+              <Switch>
+                <Route exact path="/" component={Dashboard} />
+                <Route path="/add" exact component={NewPoll} />
                 <Route path="/questions/:question_id" component={AnswerPoll} />
-                <Route path="/leaderboard" component={LeaderBoard} />
-              </div>
-            </Fragment>
-          )}
-          <Route component={PageNotFound} />
-        </Switch>
+                <Route path="/leaderboard" exact component={LeaderBoard} />
+                <Route component={PageNotFound} />
+              </Switch>
+            </div>
+          </Fragment>
+        )}
       </Router>
     );
   }

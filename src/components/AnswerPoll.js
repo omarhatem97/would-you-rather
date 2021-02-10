@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { handleSaveAnswer } from "../actions/shared";
 import Navigation from "./Navigation";
 import Result from "./results";
+import { Redirect } from "react-router-dom";
 
 class AnswerPoll extends Component {
   state = {
@@ -11,7 +12,7 @@ class AnswerPoll extends Component {
   };
 
   componentDidMount() {
-    const { question_id, question, authedUser, author, users } = this.props;
+    const { question_id, questions, authedUser, author, users } = this.props;
     const answers = Object.keys(users[authedUser].answers);
     if (answers.includes(question_id)) {
       this.setState({ submitted: true });
@@ -39,7 +40,11 @@ class AnswerPoll extends Component {
 
   render() {
     let card;
-    const { question_id, question, authedUser, author, users } = this.props;
+    const { question_id, questions, authedUser, author, users } = this.props;
+    //check if qid is invalid
+    if (questions[question_id] === undefined) {
+      return <Redirect to="/notfound" />;
+    }
     if (this.state.submitted === false) {
       card = (
         <div>
@@ -124,13 +129,15 @@ class AnswerPoll extends Component {
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { question_id } = props.match.params;
   const question = questions[question_id];
-  const author = question.author;
+  const author = question === undefined ? "" : question.author;
+
   return {
     question_id,
     question,
     authedUser,
     author,
     users,
+    questions,
   };
 }
 export default connect(mapStateToProps)(AnswerPoll);
