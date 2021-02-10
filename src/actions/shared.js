@@ -4,7 +4,11 @@ import {
   receiveQuestions,
   saveAnswer,
 } from "../actions/questions";
-import { receiveUsers, saveUserAnswer, saveUserQuestion } from "../actions/users";
+import {
+  receiveUsers,
+  saveUserAnswer,
+  saveUserQuestion,
+} from "../actions/users";
 import {
   _getQuestions,
   _getUsers,
@@ -36,10 +40,6 @@ export function handleSaveQuesiton(authedUser, question) {
 }
 
 export function handleSaveAnswer(authedUser, qid, answer) {
-  console.log(authedUser);
-  console.log(qid);
-  console.log(answer);
-
   return (dispatch) => {
     return _saveQuestionAnswer({ authedUser, qid, answer }).then(() => {
       dispatch(saveAnswer(authedUser, answer, qid));

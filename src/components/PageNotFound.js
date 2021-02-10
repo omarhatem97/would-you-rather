@@ -3,15 +3,12 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import setAuthedUser from "../actions/authedUser";
 
-
 class PageNotFound extends Component {
-  
   handleBackButton = () => {
     this.props.dispatch(setAuthedUser(null));
-  }
+  };
 
   render() {
-    console.log("paganotfound rendered!");
     return (
       <div className="centered">
         <p className="p404">404 </p>

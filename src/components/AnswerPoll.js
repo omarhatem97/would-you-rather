@@ -24,7 +24,7 @@ class AnswerPoll extends Component {
     const { question_id, question, authedUser, author, users } = this.props;
 
     //todo save answer
-    console.log(question_id);
+
     this.props
       .dispatch(handleSaveAnswer(authedUser, question_id, val))
       .then(() => {

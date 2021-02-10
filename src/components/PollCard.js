@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 class PollCard extends Component {
   render() {
-    console.log(this.props.user);
     return (
       <div className="card">
         <div className="card-user-name">{`${this.props.user.name} asks`}</div>
